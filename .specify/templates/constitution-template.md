@@ -1,50 +1,48 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Tic-Tac-Toe Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Clean Code
+All code must be readable, well-structured, and maintainable. Functions do one thing. Names are descriptive. Game logic is fully separated from UI rendering. No magic numbers — use named constants. Follow PEP 8 and Python best practices throughout.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Attractive UI
+The user interface must be visually polished and intuitive. Use color, spacing, and clear visual hierarchy to make the board easy to read. Provide immediate feedback for every action: valid moves, invalid moves, turn changes, wins, and draws. The winning line must be visually highlighted.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Minimal Dependencies
+The project must rely on Python's standard library as much as possible. External packages are permitted only when they provide significant UI value that cannot be reasonably achieved with built-in modules. Every dependency must be explicitly justified. Zero dependencies is the ideal target.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Strict Game Rules (NON-NEGOTIABLE)
+The following rules define the valid structure and state transitions and must be enforced at all times:
+- The board consists of exactly 9 positions arranged in a 3×3 grid
+- Each position may be empty or contain exactly one mark (X or O) — never more than one
+- Two players (X and O) alternate turns, starting with X
+- Only the current player may place a mark, and only into an empty position
+- Once placed, a mark cannot be modified or overwritten
+- The number of marks placed by each player must differ by no more than one at any point
+- A player wins by occupying all three positions in a row, column, or diagonal
+- When a winning line is formed, the game ends immediately
+- If all 9 positions are filled with no winning line, the game ends in a draw
+- Once the game has ended (win or draw), no additional moves may be made
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Separation of State and Presentation
+The game state — consisting of the current board configuration, the identity of the player whose turn it is, and the game outcome status (in progress, win, or draw) — must be modeled explicitly and independently from how it is displayed. State transitions must be validated before being applied.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Stack
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Language**: Python 3.10+
+- **Dependencies**: Standard library only (unless explicitly justified for UI enhancement)
+- **Testing**: unittest or pytest
+- **Style**: PEP 8 enforced via linter
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Game logic must have unit tests covering all win conditions, draw detection, invalid move rejection, and turn enforcement
+- UI changes must be manually verified for visual correctness
+- Commits should be small and focused on a single concern
+- No game rule may be relaxed or bypassed for convenience
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution is the authoritative source of truth for the Tic-Tac-Toe project. All code must comply with the principles and game rules defined above. The game rules in Section IV are non-negotiable and override any implementation convenience. Deviations require explicit justification and documentation.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-26 | **Last Amended**: 2026-03-26
