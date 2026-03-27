@@ -1,3 +1,8 @@
+from typing import List, Optional
+
+def is_valid_move(board: List, position: int) -> bool:
+    """Check if a move is valid (position is empty and within bounds)."""
+    return 0 <= position < len(board) and board[position] == Mark.EMPTY
 
 from typing import List, Optional
 from src.models import Mark, GameState, GameStatus
@@ -49,8 +54,10 @@ def check_draw(board: List[Mark]) -> bool:
     return all(cell != Mark.EMPTY for cell in board)
 
 def get_computer_move(board: List[Mark]) -> int:
-    empty = [i for i, cell in enumerate(board) if cell == Mark.EMPTY]
-    return random.choice(empty) if empty else -1
+    from src.ai.minimax import minimax
+    # Computer is always 'O' (Mark.O)
+    _, move = minimax(board, is_maximizing=True)
+    return move if move is not None else -1
 
 def new_game(mode) -> GameState:
     from src.models import GameMode
