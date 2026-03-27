@@ -1,5 +1,31 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Tic Tac Toe Project Constitution
+
+## Core Principles
+
+### I. Test-First (NON-NEGOTIABLE)
+All new features and bugfixes must be developed using TDD: tests are written and approved before implementation. Red-Green-Refactor cycle is strictly enforced.
+
+### II. Simplicity & Readability
+Favor the simplest solution that works. Avoid unnecessary abstractions, premature optimization, or overengineering. Code and UI must be clear and easy to understand.
+
+### III. Review & Quality Gates
+All code must be reviewed before merging. No code is merged unless all tests pass and coverage is maintained. Manual verification of UI against acceptance scenarios is required.
+
+### IV. Accessibility (SHOULD)
+UI should be accessible: keyboard navigation, color contrast, and clear labels are recommended.
+
+## Additional Constraints
+
+- No persistent user data or accounts
+- No network access required
+- No sound or animation required
+
+## Development Workflow
+
+- All PRs/reviews must verify compliance with this constitution
+- Complexity must be justified in the plan
+
+**Version**: 1.0 | **Ratified**: 2026-03-27 | **Last Amended**: 2026-03-27
 
 ## Core Principles
 
